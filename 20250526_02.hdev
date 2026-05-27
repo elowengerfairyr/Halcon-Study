@@ -5,17 +5,13 @@
 <body>
 <c>*读取示例图片</c>
 <l>read_image (Image, 'C:/Users/Public/Documents/MVTec/HALCON-24.05-Progress/examples/images/claudia.png')</l>
-<c></c>
 <c>*增加对比度和亮度</c>
 <c>*scale_image(Image, ImageResult, Mult, Add)</c>
 <c>*新像素 = 原像素 * Mult + Add</c>
 <c>*Mult 大于 1 表示增强对比度，Add 大于 0 表示增加亮度</c>
 <l>scale_image (Image, ImageContrastBright, 1.5, 30)</l>
-<c></c>
 <c>*显示原图</c>
 <l>dev_display (Image)</l>
-<l>*stop ()</l>
-<c></c>
 <c>*显示增强后的图像</c>
 <l>dev_display (ImageContrastBright)</l>
 </body>
