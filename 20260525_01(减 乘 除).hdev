@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*减法(找区别)</c>
+<l>* read_image (Image1, 'MyData/8-减法2-1.png')</l>
+<l>* read_image (Image2, 'MyData/9-减法2-2.png')</l>
+<c>*转为灰度</c>
+<l>* rgb1_to_gray (Image1, GrayImage1)</l>
+<l>* rgb1_to_gray (Image2, GrayImage2)</l>
+<c>*转为16位,原来的8位,范围是0-255,同一像素的灰度值相减之后，可能会出现如：-80，但会被截断位0,</c>
+<c>*不准确 16位取值范围是-32768-32768更准确,实际显示会映射到0-255</c>
+<l>* convert_image_type (GrayImage1, ImageConverted1, 'int2')</l>
+<l>* convert_image_type (GrayImage2, ImageConverted2, 'int2')</l>
+<c>*裁剪</c>
+<l>* crop_part (ImageConverted1, ImagePart1, 0, 0, 673, 354)</l>
+<l>* crop_part (ImageConverted2, ImagePart2, 0, 0, 673, 354)</l>
+<c>*相减 用于把负差值映射到可显示灰度范围</c>
+<l>* sub_image (ImagePart1, ImagePart2, ImageSub, 1, 128)</l>
+<c></c>
+<c>*乘法(抠图)</c>
+<c>*读取原图</c>
+<l>read_image (Image, 'MyData/logo头.png')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<c>*彩色图转灰度图</c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c>*生成一张和原图一样大的黑图，所有像素值都是 0</c>
+<l>gen_image_const (blackImage, 'byte', Width, Height)</l>
+<c>*生成一个矩形区域</c>
+<l>gen_rectangle1 (region, 66,59,106,126)</l>
+<c>*把矩形区域画到黑图上，矩形内部填充为 255</c>
+<l>paint_region (region, blackImage, ImageResult, 255, 'fill')</l>
+<c>*两张图逐像素相乘</c>
+<l>mult_image (GrayImage, ImageResult, imageMult, 1.0/255, 0)</l>
+<c></c>
+<c>*除法(提亮)</c>
+<l>* read_image (Image1, 'MyData/13-除法灰度处理图卡针')</l>
+<l>* read_image (Image2, 'MyData/14-除法灰阶图片')</l>
+<c>*转为real 浮点型 eg:100/3=33.333 如果还是byte 精度会丢失</c>
+<l>* convert_image_type (Image1, ImageConverted1, 'real')</l>
+<l>* convert_image_type (Image2, ImageConverted2, 'real')</l>
+<c>*ImageResult = (Image1 / Image2) × Mult + Add  可提升亮度</c>
+<l>* div_image (ImageConverted1, ImageConverted2, ImageResult, 255, 0)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

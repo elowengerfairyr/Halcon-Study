@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>* read_image (Image, 'MyData/图像变换.png')</l>
+<l>* rgb1_to_gray (Image, GrayImage)</l>
+<c>*生成一个单位矩阵:什么变换都不做的初始矩阵</c>
+<l> hom_mat2d_identity (HomMat2DIdentity)</l>
+<c>*平移 表示在单位矩阵基础上做平移 Row方向平移 64 Column方向平移 64</c>
+<l>* hom_mat2d_translate (HomMat2DIdentity, 64, 64, HomMat2DTranslate)</l>
+<c>*缩放 图像放大2倍 Row方向和Column方向缩放2倍 以坐标(0,0)为缩放中心 左上角</c>
+<l>* hom_mat2d_scale (HomMat2DIdentity, 2, 2, 0, 0, HomMat2DScale)</l>
+<c>*旋转 以坐标(0,0)为缩放中心 左上角</c>
+<l>* hom_mat2d_rotate (HomMat2DIdentity, rad(60), 0, 0, HomMat2DRotate)</l>
+<c>*倾斜 沿X方向倾斜，也就是Column方向 以左上角为中心</c>
+<l>hom_mat2d_slant (HomMat2DIdentity, rad(30), 'x', 0, 0, HomMat2DSlant)</l>
+<c>*真正把矩阵应用到图像上</c>
+<l>* affine_trans_image (GrayImage, ImageAffineTrans, HomMat2DTranslate, 'constant', 'false')</l>
+<c></c>
+<l>read_image (Image, 'MyData/投影变换.png')</l>
+<c>* 原图中四边形的四个角点</c>
+<l>Row  := [161,279,361,85]</l>
+<l>Col  := [128,122,361,341]</l>
+<c></c>
+<c>* 目标图中对应的四个角点，将原四边形拉正为500×500正方形</c>
+<l>RowResult := [0,500,500,0]</l>
+<l>ColResult := [0,0,500,500]</l>
+<c></c>
+<c>* 根据原图点和目标点，计算投影变换矩阵</c>
+<l>hom_vector_to_proj_hom_mat2d (Row , Col , [1,1,1,1], RowResult, ColResult, [1,1,1,1], 'normalized_dlt', HomMat2D)</l>
+<c></c>
+<c>* 使用投影矩阵进行透视矫正</c>
+<l>projective_trans_image (Image, TransImage, HomMat2D, 'bilinear', 'false', 'false')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

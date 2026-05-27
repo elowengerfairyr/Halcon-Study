@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*关闭所有打开的窗口</c>
+<l>dev_close_window ()</l>
+<c>*读取图片</c>
+<l>read_image (Image, 'monkey')</l>
+<c>*获取图片的宽和高</c>
+<l>get_image_size (Image, Width, Height)</l>
+<c>*打开一个新的窗口</c>
+<l>*dev_open_window (0, 0, Width, Height, 'green', WindowHandle)</l>
+<c>*在新窗口中显示这个图片</c>
+<l>*dev_display (Image)</l>
+<c>*方法1</c>
+<c>*设置颜色为粉色</c>
+<l>dev_set_color ('pink')</l>
+<c>*设置填充模式位fill</c>
+<l>dev_set_draw ('fill')</l>
+<c>*阈值分割</c>
+<c>*threshold(Image : Region : MinGray, MaxGray : )</c>
+<c>*Image 表示输入图片 输入参数</c>
+<c>*Region 区域 阈值分割后的区域 输出参数</c>
+<c>*MinGray 最小灰度值 MaxGray 最大灰度值</c>
+<l>threshold (Image, Region, 128, 255)</l>
+<c>*显示区域</c>
+<l>dev_display (Region)</l>
+<c></c>
+<c>*方法2</c>
+<c>*先分割区域</c>
+<l>*threshold (Image, Region, 128, 255)</l>
+<c>*必须先清空窗体内容,重新渲染</c>
+<l>*dev_clear_window()</l>
+<c>*设置颜色为粉色</c>
+<l>*dev_set_color ('pink')</l>
+<c>*设置填充模式位fill</c>
+<l>*dev_set_draw ('fill')</l>
+<c>*显示区域</c>
+<l>*dev_display (Region)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'MyData/Image001G.png')</l>
+<c>*转为16位的 防止后面累加溢出 255×5=1275 大于255了  1字节8位(bit) 0-255  int2:16位(bit) -32768 ~ 32767</c>
+<l>convert_image_type (Image, ImageConverted, 'int2')</l>
+<c>*复制一份 避免修改原图</c>
+<l>copy_image (ImageConverted, DupImage)</l>
+<c>*创建一个空的“图像对象数组” 把5张噪声图放进去</c>
+<l>gen_empty_obj (imageArray)</l>
+<l>for Index := 1 to 5 by 1</l>
+<c>    *产生0-60之间的随机数，随机加减每个像素点</c>
+<l>    add_noise_white (DupImage, ImageNoise, 60)</l>
+<c>    *把每张噪声图加入图像数组</c>
+<l>    concat_obj (imageArray, ImageNoise, imageArray)</l>
+<l>endfor</l>
+<c>*图像类型元素索引从1开始</c>
+<c>*从数组取下标为1的放到imageResult中,imageResult:得到第1张噪声图</c>
+<l>select_obj (imageArray, imageResult, 1)</l>
+<l>for Index1 := 2 to 5 by 1</l>
+<l>    select_obj (imageArray, imageSelected,Index1)</l>
+<l>    add_image (imageResult, imageSelected, ImageResult, 1, 0)</l>
+<l>endfor</l>
+<c>*5张图求平均，所以乘以 1/5 = 0.2</c>
+<l>scale_image (ImageResult, ImageScaled, 0.2, 0)</l>
+<c>*显示最后平均降噪的图像</c>
+<l>dev_display (ImageScaled)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

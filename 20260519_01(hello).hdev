@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*关闭所有打开的窗口</c>
+<l>dev_close_window()</l>
+<c>*读取图片</c>
+<l>read_image (Image, 'C:/Users/Public/Documents/MVTec/HALCON-24.05-Progress/examples/images/ampoules/ampoules_01.png')</l>
+<c>*获取图片的宽和高</c>
+<l>get_image_size (Image, Width, Height)</l>
+<c>*打开新的窗口 Row:窗口左上角的垂直坐标  Column:窗口左上角的水平坐标   WindowHandle:句柄</c>
+<l>*dev_open_window (0, 0, Width, Height, 'green', WindowHandle)</l>
+<c>*-1  -1代表自适应  我不懂参数，你帮我自动配置</c>
+<l>dev_open_window (0, 0, -1, -1, 'green', WindowHandle)</l>
+<c>*在新窗口中显示Image这个图像</c>
+<l>dev_display (Image)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>* 批量选择图片</c>
+<c>*read_image：过滤类型 → 只显示图片 </c>
+<c>*read_multi：支持多选</c>
+<c>*default： 默认打开路径</c>
+<c>*Selection 存储所有选中图片的路径数组</c>
+<l>dev_open_file_dialog ('read_image', 'read_multi', 'default', Selection)</l>
+<c>* 打开窗口</c>
+<l>dev_open_window (100,50,512,512,'black',WindowHandle)</l>
+<c>* 循环读取 + 显示</c>
+<l>for Index := 0 to |Selection|-1 by 1</l>
+<l>    read_image (Image, Selection[Index])</l>
+<l>    dev_display (Image)</l>
+<c>    * 显示当前是第几张图</c>
+<l>    disp_message (WindowHandle, '第'+(Index+1)+'张', 'window', 10,10, 'red', 'true')</l>
+<c>    * 等待1秒，再显示下一张</c>
+<l>    wait_seconds (1)</l>
+<l>endfor</l>
+<c></c>
+<l>read_image (Image1, 'monkey')</l>
+<l>threshold (Image1, Region, 128, 255)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>*read_image (Image, 'C:/Users/Administrator/Desktop/MyData/蒙娜丽莎的微笑.png')</l>
+<c>*反色 新像素 = 255 - 原像素1</c>
+<l>*invert_image (Image, ImageInvert)</l>
+<c>*图像增强  7,7可以理解成7宫格 增强1倍 输出 = 原图 + 增强系数 × (原图 - 模糊图)</c>
+<c>*eg:平均值是10 我现在的值是15,那么15-10=5  最终会增强:15+5*1=20  比之前更白</c>
+<c>*eg:平均值是10 我现在的值是5,那么5-10=-5  最终会增强:-5+5*1=0 比之前更黑</c>
+<l>*emphasize (Image, ImageEmphasize, 7, 7, 1)</l>
+<c>*整体的变大2倍 增加亮度 </c>
+<l>*scale_image (Image, ImageScaled, 2, 0)</l>
+<c>*获取最大值和最小值的灰度值</c>
+<l>*min_max_gray (Image, Image, 0, Min, Max, Range)</l>
+<c>*eg:原图100 120 差值20 范围太小了</c>
+<c>*自动把图像灰度拉伸到 0~255   新像素:(当前值 - 最小值)/(最大值 - 最小值) *255 当前某个像素点是110</c>
+<c>*(110-100)/(120-100) *255=128  那就是从110-&gt;128对比度就会更亮了 图像对比度会明显增强</c>
+<l>*scale_image_max (Image, ImageScaleMax)</l>
+<c>*把图像灰度自动拉伸到指定范围</c>
+<l>*scale_image_range (Image, ImageScaled, 100, 200)</l>
+<l>read_image (Image, 'MyData/噪声图片.jpg')</l>
+<c>*均值滤波 用周围像素的平均值替换当前像素 结果:图像更平滑,噪声减少</c>
+<l>mean_image (Image, ImageMean, 3, 3)</l>
+<c></c>
+<c>*中值滤波 取周围像素排序后的中间值 eg:周围是 0 255 100-&gt;排序0 100 255 拿到的是100,极端的会被忽略掉</c>
+<c>*circle:圆形 还有square(正方形)  1:半径 mirrored：处理方式镜像 </c>
+<l>median_image (Image, ImageMedian, 'circle', 1, 'mirrored')</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

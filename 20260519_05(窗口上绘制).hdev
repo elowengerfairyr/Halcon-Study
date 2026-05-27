@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*关闭窗口</c>
+<l>dev_clear_window()</l>
+<c>*打开一个新的窗口  位置(100,50)，大小512x512，黑色背景</c>
+<l>dev_open_window (100, 50, 512, 512, 'black', WindowHandle)</l>
+<c>*设置绘制颜色</c>
+<l>dev_set_color('green') </l>
+<c>*设置线条宽度</c>
+<l>dev_set_line_width(5)</l>
+<c>*绘制一个箭头 窗口句柄、起点、终点、箭头大小</c>
+<l>disp_arrow (WindowHandle, 10, 10, 118, 118, 1)</l>
+<c>*绘制一个圆 窗口句柄、圆心、半径</c>
+<l>disp_circle (WindowHandle, 150, 150, 30)</l>
+<c>*绘制一个矩形 窗口句柄、起点、终点</c>
+<l>disp_rectangle1 (WindowHandle, 200, 200, 250, 250)</l>
+<c>*绘制一个线 窗口句柄、起点、终点</c>
+<l>disp_line (WindowHandle, 300, 300, 350, 350)</l>
+<c>*显示文字 </c>
+<c>*WindowHandle:在哪个窗口显示  'true'是否显示后面背景 true显示 false不显示</c>
+<l>disp_message (WindowHandle, 'jtj', 'window', 140, 140, 'pink', 'true')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

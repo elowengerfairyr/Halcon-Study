@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>*read_image (Image, 'earth')</l>
+<c>*读取某一个像素点的亮度值</c>
+<l>*get_grayval (Image, 75, 75, Grayval)</l>
+<c></c>
+<l>*read_image (Image, 'monkey')</l>
+<c>* 读取 (206,206) 这个点的灰度</c>
+<l>*get_grayval (Image, 206, 206, Grayval)</l>
+<c>* 把这个点改成 100</c>
+<l>*set_grayval (Image, 206, 206, 100)</l>
+<c>* 再读一遍，确认变成 100 了</c>
+<l>*get_grayval (Image, 206, 206, Grayval)</l>
+<c></c>
+<c></c>
+<c>*获取原图有效区域</c>
+<l>*get_domain (Image, Domain)</l>
+<c>*生成圆形区域 参数圆心行、圆心列、半径</c>
+<l>*gen_circle (Circle, 216, 216, 50)</l>
+<c>*生成正矩形 左上角行列、右下角行列 边平行图像坐标轴，不能旋转</c>
+<l>*gen_rectangle1 (Rectangle, 80, 80, 160, 160)</l>
+<c>*生成旋转矩形 Angle:旋转角度，必须转弧度 Length1：长边半长 Length2：短边半长</c>
+<l>*gen_rectangle2 (Rectangle1, Row, Column, Angle, Length1, Length2) </l>
+<c>*160,180  200 220 起始和终点</c>
+<l>*gen_rectangle2 (Rectangle1, 180, 200, rad(0), 20, 20)</l>
+<c>* 生成椭圆 Radius1：长半轴 Radius2：短半轴 圆心200,200 宽40 高20</c>
+<l>*gen_ellipse (Ellipse, Row, Column, Angle, Radius1, Radius2)</l>
+<l>*gen_ellipse (Ellipse, 200, 200, 0, 40, 20)</l>
+<c></c>
+<l> *read_image (Image, 'earth')</l>
+<l> *gen_circle (Circle, 75,75,25)</l>
+<c>*按圆抠图</c>
+<l> *reduce_domain (Image, Circle, ImageReduced)</l>
+<c>  </c>
+<l> *read_image (Image, 'earth')</l>
+<c>*生成一个矩形区域：左上角(80,80)  右下角(160,160)</c>
+<l>  *gen_rectangle1 (Rectangle, 80, 80, 160, 160)</l>
+<c> *把区域里的每一个点的坐标全部取出来 Rows和Columns分别返回的是数组</c>
+<l> *get_region_points (Rectangle, Rows, Columns)</l>
+<c></c>
+<l> *read_image (Image, 'earth')</l>
+<l> *gen_rectangle1 (Rectangle, 80, 80, 100, 100)</l>
+<c> *求区域的 面积 + 中心坐标</c>
+<l> *area_center (Rectangle, Area, Row, Column)</l>
+<c>  </c>
+<l> *read_image (Image, 'earth')</l>
+<c> *画了一个L</c>
+<l> *gen_contour_polygon_xld (Contour, [100,200,300,300,300], [100,100,100,200,300])</l>
+<c> *获取轮廓信息 Row:[100.0,200.0,300.0,300.0] Col:[100.0,100.0,100.0,200.0,300.0]</c>
+<l>* get_contour_xld (Contour, Row, Col)</l>
+<c> *在每个点上 画十字标记  Row, Col分别表示点 100：十字线的长度 45：十字线旋转角度</c>
+<l> *gen_cross_contour_xld (Cross, Row, Col, 100, rad(45))</l>
+<c> </c>
+<c> </c>
+<c> </c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*元组的赋值和创建</c>
+<l>i := 1</l>
+<l>p1 := 3.14</l>
+<c>*字符串</c>
+<l>name := '张三'</l>
+<c>*元组创建</c>
+<l>num1 := [1,2,3]</l>
+<l>num2:=[4,5]</l>
+<c>*元组拼接</c>
+<l>num3 := [num1, num2]</l>
+<c>*元组拼接函数</c>
+<l>tuple_concat(num1, num2, num4)</l>
+<c></c>
+<c>*元组访问</c>
+<c>*获取元素 元组索引从 0 开始</c>
+<l>num5 := num1[1]</l>
+<c>*修改元素</c>
+<l>num1[0] := 100</l>
+<c>*获取长度</c>
+<l>tuple_length(num1, Length)</l>
+<c></c>
+<c>*类型判断 1：是整数，0：不是</c>
+<c>*是否整数</c>
+<l>tuple_is_int(i, IsInt)</l>
+<c>*是否浮点</c>
+<l>tuple_is_real(p1, IsReal)</l>
+<c>*是否字符串</c>
+<l>tuple_is_string(name, IsString)</l>
+<c></c>
+<c>*元组比较与查找</c>
+<c>*是否相等  1：相等，0：不等</c>
+<l>tuple_equal(num1, num2, Equal)</l>
+<c>*查找下标 </c>
+<l>tuple_find(num1, 2, Indices)</l>
+<c>*排序</c>
+<l>tuple_sort(num1, Sorted)</l>
+<c>*最大最小</c>
+<l>tuple_max(num1, Max)</l>
+<c>*求和</c>
+<l>tuple_sum(num1, Sum)</l>
+<c>*平均</c>
+<l>tuple_mean(num1, Mean)</l>
+<c></c>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle1)</l>
+<c>*循环遍历元组</c>
+<l>num6 := [10, 20, 30]</l>
+<l>Index := 0</l>
+<l>while (Index &lt; |num1|)</l>
+<l>    disp_message(WindowHandle1, num6[Index], 'window', 12, 12 + 30*Index, 'white', 'true')</l>
+<l>    Index := Index + 1</l>
+<l>endwhile</l>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

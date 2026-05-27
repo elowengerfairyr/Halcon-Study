@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*关闭所有打开的窗口</c>
+<l>dev_close_window ()</l>
+<c>*读取图片</c>
+<l>read_image (Image, 'for5')</l>
+<c>*获取图片的宽和高</c>
+<l>get_image_size (Image, Width, Height)</l>
+<c>*打开一个新的窗口 WindowHandle窗口变量</c>
+<l>dev_open_window (0, 0, Width, Height, 'green', WindowHandle)</l>
+<c>*在新窗口中显示这个图片</c>
+<l>dev_display (Image)</l>
+<c>*设置窗体的查找表</c>
+<l>dev_set_lut ('rainbow')</l>
+<l>dev_display (Image)</l>
+<c>*设置窗体的查找表默认</c>
+<l>dev_set_lut ('default')</l>
+<l>dev_display(Image)</l>
+<c>*停止运行</c>
+<l>stop()</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

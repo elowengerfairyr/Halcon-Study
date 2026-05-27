@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image1, 'monkey')</l>
+<l>read_image (Image2, 'earth')</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle1)</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle2)</l>
+<l> dev_display (Image1)</l>
+<l> dev_display (Image2)</l>
+<c>*灰色图</c>
+<l>*disp_image (Image1, WindowHandle1)</l>
+<c>*彩图</c>
+<l>*disp_color (Image2, WindowHandle2)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

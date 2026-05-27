@@ -1,0 +1,11 @@
+*.bak
+*.tmp
+*.log
+*.hdict
+*.hobj
+output/
+result/
+results/
+temp/
+Thumbs.db
+Desktop.ini
