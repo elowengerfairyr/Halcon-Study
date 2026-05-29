@@ -24,6 +24,7 @@
 <c>*Region 区域 阈值分割后的区域 输出参数</c>
 <c>*MinGray 最小灰度值 MaxGray 最大灰度值</c>
 <l>threshold (Image, Region, 128, 255)</l>
+<l>*dev_clear_window ()</l>
 <c>*显示区域</c>
 <l>dev_display (Region)</l>
 <c></c>

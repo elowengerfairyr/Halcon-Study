@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>list_files ('C:/Users/Administrator/Desktop/visionpro素材/骰子img', ['files','follow_links'], ImageFiles)</l>
+<l>tuple_regexp_select (ImageFiles, ['\\.(tif|tiff|gif|bmp|jpg|jpeg|jp2|png|pcx|pgm|ppm|pbm|xwd|ima|hobj)$','ignore_case'], ImageFiles)</l>
+<l>for Index := 0 to |ImageFiles| - 1 by 1</l>
+<l>    read_image (Image, ImageFiles[Index])</l>
+<c>    *把彩色图转成灰度图</c>
+<l>    rgb1_to_gray (Image, GrayImage)</l>
+<c>    *提取灰度值在 0~128 之间的区域</c>
+<l>    threshold (GrayImage, Region, 0, 128)</l>
+<c>    *把连在一起的黑色区域分成一个个独立区域</c>
+<l>    connection (Region, ConnectedRegions)</l>
+<l>    area_center (ConnectedRegions, Area, Row, Column)</l>
+<c>    *计算每个区域的面积和中心点</c>
+<l>    select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 200, 500)</l>
+<c>    *统计筛选后区域的数量</c>
+<l>    count_obj (SelectedRegions, Number)</l>
+<l>    dev_display (GrayImage)</l>
+<l>    dev_display (SelectedRegions)</l>
+<l>    disp_message (WindowHandle, Number, 'window', 100, 100, 'black', 'true')</l>
+<l>endfor</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -27,6 +27,7 @@
 <l>scale_image (ImageResult, ImageScaled, 0.2, 0)</l>
 <c>*显示最后平均降噪的图像</c>
 <l>dev_display (ImageScaled)</l>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>

@@ -3,7 +3,7 @@
 <procedure name="main">
 <interface/>
 <body>
-<l>*read_image (Image, 'C:/Users/Administrator/Desktop/MyData/蒙娜丽莎的微笑.png')</l>
+<l>read_image (Image, 'C:/Users/Administrator/Desktop/MyData/蒙娜丽莎的微笑.png')</l>
 <c>*反色 新像素 = 255 - 原像素1</c>
 <l>*invert_image (Image, ImageInvert)</l>
 <c>*图像增强  7,7可以理解成7宫格 增强1倍 输出 = 原图 + 增强系数 × (原图 - 模糊图)</c>
@@ -20,13 +20,18 @@
 <l>*scale_image_max (Image, ImageScaleMax)</l>
 <c>*把图像灰度自动拉伸到指定范围</c>
 <l>*scale_image_range (Image, ImageScaled, 100, 200)</l>
-<l>read_image (Image, 'MyData/噪声图片.jpg')</l>
+<l>*read_image (Image, 'MyData/噪声图片.jpg')</l>
 <c>*均值滤波 用周围像素的平均值替换当前像素 结果:图像更平滑,噪声减少</c>
-<l>mean_image (Image, ImageMean, 3, 3)</l>
+<l>*mean_image (Image, ImageMean, 3, 3)</l>
 <c></c>
 <c>*中值滤波 取周围像素排序后的中间值 eg:周围是 0 255 100-&gt;排序0 100 255 拿到的是100,极端的会被忽略掉</c>
 <c>*circle:圆形 还有square(正方形)  1:半径 mirrored：处理方式镜像 </c>
-<l>median_image (Image, ImageMedian, 'circle', 1, 'mirrored')</l>
+<l>*median_image (Image, ImageMedian, 'circle', 1, 'mirrored')</l>
+<c></c>
+<c>*高斯滤波 = 加权平均   权重 = 中间大、周围小 </c>
+<c>*eg:1.取 5×5 周围像素 2.每个像素 × 高斯权重（中间大，周围小）累加 3.除以总权重</c>
+<c>*按距离加权平均 → 去噪、模糊、平滑</c>
+<l>*gauss_filter (Image, ImageGauss, 5)</l>
 <c></c>
 <c></c>
 </body>

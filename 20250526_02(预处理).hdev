@@ -14,6 +14,9 @@
 <l>dev_display (Image)</l>
 <c>*显示增强后的图像</c>
 <l>dev_display (ImageContrastBright)</l>
+<l>num1:=[1,2]</l>
+<l>tuple_length (num1, Length)</l>
+<l>tuple_select (num1, Length, Selected)</l>
 </body>
 <docu id="main">
 <parameters/>

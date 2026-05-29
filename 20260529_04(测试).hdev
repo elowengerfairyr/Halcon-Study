@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'MyData/图像分割/车牌.jpg')</l>
+<c></c>
+<c>*红框中车牌号区域的坐标</c>
+<l>Row1 := 60</l>
+<l>Column1 := 40</l>
+<l>Row2 := 170</l>
+<l>Column2 := 438</l>
+<c></c>
+<c>*把车牌号区域裁剪出来</c>
+<l>crop_rectangle1 (Image, PlateImage, Row1, Column1, Row2, Column2)</l>
+<c>*显示裁剪后的车牌号区域</c>
+<l>*dev_clear_window ()</l>
+<l>dev_display (PlateImage)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
