@@ -18,20 +18,6 @@
 <l>* sobel_amp (Image, EdgeAmplitude, 'sum_abs', 3)</l>
 <l>* laplace (Image, ImageLaplace, 'absolute', 3, 'n_4')</l>
 <c></c>
-<c>*1.自动分割</c>
-<l>* read_image (Image, 'MyData/图像分割/手动阈值分割.png')</l>
-<l>* rgb1_to_gray (Image, GrayImage)</l>
-<c>*计算灰度直方</c>
-<l>* gray_histo (GrayImage, GrayImage, AbsoluteHisto, RelativeHisto)</l>
-<c>*计算出所有的波峰</c>
-<l>* histo_to_thresh (AbsoluteHisto, 2, MinThresh, MaxThresh)</l>
-<l>* threshold (GrayImage, Region, MinThresh[0], MaxThresh[0])</l>
-<l>* dev_display (Region)</l>
-<c></c>
-<c>*2.手动分割</c>
-<l>* read_image (Image, 'MyData/图像分割/手动阈值分割.png')</l>
-<l>* rgb1_to_gray (Image, GrayImage)</l>
-<l>* threshold (GrayImage, Regions, 0, 140)</l>
 <c></c>
 <c>*3.获取车牌</c>
 <l>read_image (Image, 'MyData/图像分割/车牌.jpg')</l>

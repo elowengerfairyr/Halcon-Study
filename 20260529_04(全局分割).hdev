@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*全局分割</c>
+<c>*1.手动分割</c>
+<l>* read_image (Image, 'MyData/图像分割/手动阈值分割.png')</l>
+<l>* rgb1_to_gray (Image, GrayImage)</l>
+<l>* threshold (GrayImage, Regions, 0, 140)</l>
+<c></c>
+<c>*2.自动阈值分割</c>
+<c>*获取图像</c>
+<l>read_image (Image, 'MyData/图像分割/自动阈值分割.png')</l>
+<c>*自动阈值分割</c>
+<l>auto_threshold (Image, Regions, 5)</l>
+<c>*显示分割区域</c>
+<l>dev_display (Regions)</l>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

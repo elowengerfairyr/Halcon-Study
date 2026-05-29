@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c></c>
+<c>*var_threshold 获取小圆孔</c>
+<l>* read_image (Holes, 'MyData/图像分割/holes.jpg')</l>
+<l>* rgb1_to_gray (Holes, GrayImage)</l>
+<c>*设置矩形，选择感兴趣区域</c>
+<l>* gen_rectangle1 (Rectangle, 170, 80, 370, 510)</l>
+<l>* reduce_domain (GrayImage, Rectangle, ImageReduced)</l>
+<l>* var_threshold (ImageReduced, Region, 15, 15, 0.2, 35, 'dark')</l>
+<c></c>
+<c></c>
+<c>*dyn_threshold</c>
+<l>read_image (Image, 'MyData/图像分割/text.jpg')</l>
+<c>*将图像转换为灰度</c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c>*由于图像对比度比较低，对图像进行相乘，增强对比度</c>
+<l>mult_image (GrayImage, GrayImage, ImageResult, 0.005, 0)</l>
+<c>*使用平滑滤波器对原始图像进行适当平滑</c>
+<l>mean_image (ImageResult, ImageMean, 50,50)</l>
+<c>*动态阈值分割，提取字符区域</c>
+<l>dyn_threshold (ImageResult, ImageMean, RegionDynThresh, 4, 'not_equal')</l>
+<c>*开运算，去除无意义的小的杂点</c>
+<l>opening_circle (RegionDynThresh, RegionOpening, 1.5)</l>
+<l>dev_clear_window()</l>
+<l>dev_display (RegionOpening)</l>
+<c></c>
+<c></c>
+<c>*char_threshold</c>
+<l>read_image (Char, 'MyData/图像分割/char.jpg')</l>
+<l>rgb1_to_gray (Char, GrayImage)</l>
+<l>char_threshold (GrayImage, GrayImage, Characters, 2, 95, Threshold)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
