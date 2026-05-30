@@ -7,10 +7,7 @@
 <c>*索贝尔算子,提取算子,提取边缘,边缘高亮显示</c>
 <c>*边缘高亮显示:相邻列和行相减的绝对值求和/3</c>
 <l>* sobel_amp (Image, EdgeAmplitude, 'sum_abs', 3)</l>
-<c>*提取边缘后对像素进行阈值分割</c>
-<l>* threshold (EdgeAmplitude, Region, 15, 255)</l>
-<l>* dev_clear_window ()</l>
-<l>* dev_set_color ('green')</l>
+<c></c>
 <c>*提取边缘框架，反复玻璃边缘像素,但保持连通性,最终留下中心线</c>
 <l>* skeleton (Region, Skeleton)</l>
 <c></c>

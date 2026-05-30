@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'fabrik')</l>
+<c>*索贝尔</c>
+<l>*sobel_amp (Image, EdgeAmplitude, 'sum_abs', 3)</l>
+<c>*</c>
+<l>*prewitt_amp (Image, ImageEdgeAmp)</l>
+<c>*</c>
+<l>*roberts (Image, ImageRoberts, 'gradient_sum')</l>
+<c>*</c>
+<l>*kirsch_amp (Image, ImageEdgeAmp)</l>
+<c>*</c>
+<l>*laplace (Image, ImageLaplace, 'absolute', 3, 'n_4')</l>
+<c></c>
+<l>*edges_image (Image, ImaAmp, ImaDir, 'canny', 1, 'nms', 20, 40)</l>
+<c>*</c>
+<l>edges_sub_pix (Image, Edges, 'canny', 1, 20, 40)</l>
+<l>*threshold (Edges, Region, 20, 255)</l>
+<l>*dev_clear_window ()</l>
+<l>*dev_display (Image)</l>
+<l>*dev_set_color ('green')</l>
+<c>*骨架提取 粗线 → 细线</c>
+<l>*skeleton (Region, Skeleton)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

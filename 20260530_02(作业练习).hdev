@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="24.05.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*圆的面积</c>
+<l>read_image (Holes, 'MyData/特征提取/holes.jpg')</l>
+<l>gen_rectangle1 (Rectangle, 202, 73, 359, 518)</l>
+<l>reduce_domain (Holes, Rectangle, ImageReduced)</l>
+<c>*简写</c>
+<l>rectangle1_domain (Holes, ImageReduced, 202, 73, 359, 518)</l>
+<l>threshold (ImageReduced, Region, 0, 128)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 2400, 3400)</l>
+<l>area_center (SelectedRegions, Area, Row, Column)</l>
+<l>dev_clear_window ()</l>
+<l>dev_display (SelectedRegions)</l>
+<l>dev_get_window (WindowHandle)</l>
+<l>for Index := 0 to |Area| - 1 by 1</l>
+<l>    disp_message (WindowHandle, 'Area: ' + Area[Index], 'image', Row[Index], Column[Index], 'white', 'false')</l>
+<l>endfor</l>
+<c></c>
+<c>*药物面积总和</c>
+<l>* read_image (image, 'MyData/特征提取/holes2.jpg')</l>
+<l>* rgb1_to_gray (image, GrayImage)</l>
+<l>* threshold (GrayImage, Region, 0, 50)</l>
+<l>* connection (Region, ConnectedRegions)</l>
+<l>* area_center (Region, Area, Row, Column)</l>
+<l>* sumArea:=0</l>
+<l>* for Index := 1 to 3 by 1</l>
+<l>*     select_obj (ConnectedRegions, ObjectSelected, Index)</l>
+<l>*     area_center (ObjectSelected, Area, Row, Column)</l>
+<l>*     sumArea:=sumArea+ Area</l>
+<l>* endfor</l>
+<c></c>
+<c></c>
+<c>*齿轮面积</c>
+<l>*  read_image (Image, 'rings_and_nuts.png')</l>
+<c>*按图像大小打开窗口</c>
+<l>* dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle)</l>
+<l>* dev_set_color ('green')</l>
+<l>* set_display_font (WindowHandle, 16, 'mono', 'true', 'false')</l>
+<l>* dev_display (Image)</l>
+<l>* threshold (Image, Region, 128, 255)</l>
+<l>* area_holes (Region, Area)</l>
+<l>* disp_message (WindowHandle, Area, 'window', 12, 12, 'black', 'true')</l>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c> </c>
+<c> </c>
+<c> </c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
